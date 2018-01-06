@@ -90,15 +90,17 @@ zplug "yous/vanilli.sh"
 zplug "zsh-users/zsh-completions"
 
 # Load the theme.
-# zplug 'yous/lime', as:theme
-# zplug 'dracula/zsh', as:theme
-# zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+#zplug 'yous/lime', as:theme
+#zplug 'dracula/zsh', as:theme
+#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 # prezto のプラグインやテーマを使用する
-zplug "modules/osx", from:prezto, if:"[[ $OSTYPE == *darwin* ]]"
-zplug "modules/prompt", from:prezto
+#zplug "modules/osx", from:prezto, if:"[[ $OSTYPE == *darwin* ]]"
+#zplug "modules/prompt", from:prezto
 
 # zstyle は zplug load の前に設定する
-zstyle ':prezto:module:prompt' theme 'giddie'
+#zstyle ':prezto:module:prompt' theme 'giddie'
+
+
 
 # Syntax highlighting bundle. zsh-syntax-highlighting must be loaded after
 # excuting compinit command and sourcing other plugins.
@@ -191,3 +193,35 @@ bindkey '^R' peco-history-selection
 
 [[ -s /Users/RESKY/.tmuxinator/scripts/tmuxinator ]] && source /Users/RESKY/.tmuxinator/scripts/tmuxinator
 source ~/.tmuxinator/tmuxinator.zsh
+
+########################################
+# プロンプト設定
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+  # 1行あける
+  print
+  # カレントディレクトリ
+  local left=' %{\e[38;5;2m%}(%~)%{\e[m%}'
+  # バージョン管理されてた場合、ブランチ名
+  vcs_info
+  local right="%{\e[38;5;001m%}${vcs_info_msg_0_}%{\e[m%}"
+  # スペースの長さを計算
+  # テキストを装飾する場合、エスケープシーケンスをカウントしないようにします
+  local invisible='%([BSUbfksu]|([FK]|){*})'
+  local leftwidth=${#${(S%%)left//$~invisible/}}
+  local rightwidth=${#${(S%%)right//$~invisible/}}
+  local padwidth=$(($COLUMNS - ($leftwidth + $rightwidth) % $COLUMNS))
+
+  print -P $left${(r:$padwidth:: :)}$right
+}
+# ユーザ名@ホスト名
+PROMPT="%{$fg[yellow]%}[%n@%m]%(!.#.$) %{$reset_color%}"
+# 現在時刻
+RPROMPT=$'%{\e[38;5;251m%}%D{%b %d}, %*%{\e[m%}'
+TMOUT=1
+TRAPALRM() {
+  zle reset-prompt
+}

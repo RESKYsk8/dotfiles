@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/RESKY/01_tech/02_php/public_html'
+let g:netrw_dirhist_2='/Users/RESKY/01_tech/03_Rails/sample_app_4th_ed/app/views/users'
+let g:netrw_dirhist_3='/Users/RESKY/01_tech/03_Rails/skatenavi_app/app/views/static_pages'
+let g:netrw_dirhist_4='/Users/RESKY/.zplug'

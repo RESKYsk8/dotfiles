@@ -24,7 +24,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " NeoBundle自身を管理
 NeoBundleFetch 'Shougo/neobundle.vim'
 " カラースキームmolokai
-NeoBundle 'tomasr/molokai'
+"NeoBundle 'tomasr/molokai'
 " ステータスラインの表示内容強化
 NeoBundle 'itchyny/lightline.vim'
 " インデントの可視化
@@ -65,12 +65,15 @@ NeoBundleCheck
 "----------------------------------------------------------
 " カラースキーム
 "----------------------------------------------------------
-if neobundle#is_installed('molokai')
-    colorscheme molokai " カラースキームにmolokaiを設定する
-endif
+"if neobundle#is_installed('molokai')
+"    colorscheme molokai " カラースキームにmolokaiを設定する
+"endif
+"set t_Co=256 " iTerm2など既に256色環境なら無くても良い
 
-set t_Co=256 " iTerm2など既に256色環境なら無くても良い
 syntax enable " 構文に色を付ける
+
+set background=dark
+colorscheme hybrid
 
 "----------------------------------------------------------
 " 文字
