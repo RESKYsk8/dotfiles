@@ -1,6 +1,8 @@
 # MY DOTFILES SETUP !!
 
-## Installation
+This dot file is for testing.*****It does not help you manage and update your dot files.**
+
+## Install
 
     $ git clone git@github.com:RESKYsk8/dotfiles.git  
     $ cd dotfiles  
@@ -8,9 +10,8 @@
 
 ## Directory Structure
 
-`.  
-├── README.md  
-├── hybrid.vim  
-└── install.sh  `
-
+    .  
+    ├── README.md  
+    ├── hybrid.vim  
+    └── install.sh  `
 
