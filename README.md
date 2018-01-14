@@ -4,7 +4,7 @@ This dot file is for testing.*****It does not help you manage and update your do
 
 ## Install
 
-    $ git clone https://github.com/sk8resky/dotfiles.git  
+    $ git clone https://github.com/yoshimasa-i/dotfiles.git  
     $ cd dotfiles  
     $ sh install.sh  
 
