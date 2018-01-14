@@ -1,4 +1,4 @@
-# MY DOTFILES SETUP !!
+# MY DOTFILES
 
 This dot file is for testing.*****It does not help you manage and update your dot files.**
 
